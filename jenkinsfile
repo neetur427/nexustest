@@ -3,7 +3,7 @@ node {
     def maven = tool name: "maven3.9"
    def remoteserver = "test1@3.85.238.114"
    def warfile = ""
-   def remotePath = ""
+   def remotePath = "/opt/apache-tomcat-11.0.3/webapps/"
 
      //checkout stage
     stage ('checkout'){
