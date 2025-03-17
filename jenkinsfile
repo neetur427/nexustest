@@ -1,7 +1,7 @@
 node {
     
     def maven = tool name: "maven3.9"
-   def remoteserver = "test1@3.85.238.114"
+   def remoteserver = "test2@3.85.238.114"
    def warfile = ""
    def remotePath = "/opt/apache-tomcat-11.0.3/webapps/"
 
@@ -22,9 +22,10 @@ node {
     stage ('nexus upload'){
         sh "$maven/bin/mvn deploy"
     }
+
 //deploy to tomcat
 stage('deploy to tomcat'){
-sshagent(['test1']) {
+sshagent(['test2']) {
 sh "scp $(warfile) $(remoteServer):$(remotePath)"
    }
 }
