@@ -7,8 +7,7 @@ node {
 
      //checkout stage
     stage ('checkout'){
-        git 'https://github.com/neetur427/nexustest.git'
-
+       git branch:'master', url: 'https://github.com/neetur427/nexustest.git'
     }
     //build stage
     stage ('building'){
