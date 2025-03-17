@@ -1,0 +1,24 @@
+node {
+    
+    def maven = tool name: "maven3.9"
+
+     //checkout stage
+    stage ('checkout'){
+        git 'https://github.com/neetur427/nexustest.git'
+
+    }
+    //build stage
+    stage ('building'){
+        sh "$maven/bin/mvn clean package"
+}
+    //sonarqube report
+    stage ('sonarqube report'){
+        sh "$maven/bin/mvn sonar:sonar"
+    }
+    
+    //nexus upload
+    stage ('nexus upload'){
+        sh "$maven/bin/mvn deploy"
+    }
+        
+}//node closing
