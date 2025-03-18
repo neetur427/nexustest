@@ -23,10 +23,11 @@ node {
         sh "$maven/bin/mvn deploy"
     }
 
-//deploy to tomcat
-stage('deploy to tomcat'){
-sshagent(['test2']) {
-sh "scp $(warfile) $(remoteServer):$(remotePath)"
-   }
+/deploy
+    stage(' deploy to tomcat '){
+        sshagent(['test']) {
+         sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@3.94.9.95:/opt/apache-tomcat-11.0.3/webapps"
+      
+
 }
 }//node closing
