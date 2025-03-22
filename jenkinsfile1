@@ -3,7 +3,7 @@ node {
     def maven = tool name: "maven3.9"
      //checkout stage
     stage ('checkout'){
-       git branch:'master', url: 'https://github.com/neetur427/nexustest.git'
+     git 'https://github.com/neetur427/nexustest.git'
     }
     //build stage
     stage ('building'){
